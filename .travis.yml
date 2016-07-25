@@ -1,5 +1,5 @@
 language: java
-script: mvn test -Dselenium2basics.webdriver=HTMLUNIT
+script: mvn -f code/pom.xml test -Dselenium2basics.webdriver=HTMLUNIT
 jdk:
   - oraclejdk8
   - oraclejdk7
