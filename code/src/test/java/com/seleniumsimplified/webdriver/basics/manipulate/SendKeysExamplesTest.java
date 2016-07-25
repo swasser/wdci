@@ -29,13 +29,13 @@ public class SendKeysExamplesTest {
                 = driver.findElement(By.name("comments"));
         commentTextArea.clear();
 
-        commentTextArea.sendKeys(Keys.chord(Keys.SHIFT, "bob", Keys.NULL, " Dobbs"));
+        commentTextArea.sendKeys(Keys.chord("bob"," Dobbs"));
 
         clickSubmitButton();
 
         new WebDriverWait(driver,10).until(ExpectedConditions.titleIs("Processed Form Details"));
 
-        assertExpectedCommentText("BOB Dobbs");
+        assertExpectedCommentText("bob Dobbs");
     }
 
     private void assertExpectedCommentText(String expectedCommentText) {

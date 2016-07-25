@@ -32,8 +32,8 @@ public class FindByIDOrNameExampleTest {
                              new ByIdOrName("pName2"));
 
         assertEquals("expected a match on name",
-                "This is b paragraph text",
-                element.getText());
+                "p2",
+                element.getAttribute("id"));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class FindByIDOrNameExampleTest {
                 new ByIdOrName("p3"));
 
         assertEquals("expected a match on id",
-                "This is c paragraph text",
-                element.getText());
+                "pName3",
+                element.getAttribute("name"));
     }
 }

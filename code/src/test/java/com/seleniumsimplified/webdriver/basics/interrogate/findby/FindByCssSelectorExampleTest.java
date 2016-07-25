@@ -30,8 +30,8 @@ public class FindByCssSelectorExampleTest {
                 By.cssSelector("#p3"));
 
         assertEquals("expected a match on id",
-                "This is c paragraph text",
-                element.getText());
+                "pName3",
+                element.getAttribute("name"));
     }
 
     @Test

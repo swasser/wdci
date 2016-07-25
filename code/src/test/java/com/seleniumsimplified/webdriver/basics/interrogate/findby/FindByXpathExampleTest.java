@@ -27,13 +27,6 @@ public class FindByXpathExampleTest {
         List<WebElement> elements;
         elements = driver.findElements(By.xpath("//p"));
 
-        int nestedCount = 0;
-        for(WebElement e : elements){
-            if(e.getText().contains("nested para")){
-                nestedCount++;
-            }
-        }
-        assertEquals(16,nestedCount);
         assertEquals(41, elements.size());
     }
 
