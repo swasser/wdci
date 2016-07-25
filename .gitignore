@@ -1,0 +1,7 @@
+/code/.idea
+/code/target
+/code/webdrivercibasics.iml
+/tools/marionette/wires.exe
+/tools/iedriver_64/IEDriverServer.exe
+/tools/iedriver_32/IEDriverServer.exe
+/tools/chromedriver/chromedriver.exe
