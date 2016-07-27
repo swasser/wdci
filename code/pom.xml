@@ -86,7 +86,7 @@
         </plugins>
     </build>
 
-    <!-- examples of how to use the profiles from the command line -->
+    <!-- examples of how to use the properties from the command line -->
     <!-- mvn test
         will run the tests using firefox -->
 
@@ -97,5 +97,35 @@
     <!-- mvn test -DWEBDRIVER_GRID_URL=http://id@ondemand.saucelabs.com:80/wd/hub -DWEBDRIVER_GRID_BROWSER=firefox -DWEBDRIVER_GRID_BROWSER_VERSION=39.0 -DWEBDRIVER_GRID_BROWSER_PLATFORM="Windows 7"
                 will use saucelabs to run the tests on firefox
     -->
+
+
+    <!-- examples of how to use the profiles from the command line -->
+    <!-- profiles let me run groups of test classes, particularly useful for suites -->
+    <!-- mvn test -PIMtests    -->
+
+    <!-- mvn clean -PIMtests -Dselenium2basics.webdriver=HTMLUNIT test
+            clean the project then run the suites defined in the profile IMtests using HTMLUnit -->
+    <profiles>
+        <profile>
+            <id>IMtests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.14.1</version>
+                        <configuration>
+                            <includes>
+                                <include>**/InterrogateOnlySuite.class</include>
+                                <include>**/ManipulateOnlySuite.class</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
 
 </project>
