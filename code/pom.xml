@@ -13,8 +13,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <webdriver.version>2.53.1</webdriver.version>
-        <!-- <webdriver.version>3.0.0-beta1</webdriver.version> -->
+        <!--<webdriver.version>2.53.1</webdriver.version>-->
+        <webdriver.version>3.0.0-beta1</webdriver.version>
         <junit.version>4.12</junit.version>
         <htmlunitdriver.version>2.21</htmlunitdriver.version>
     </properties>
