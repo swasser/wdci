@@ -168,7 +168,8 @@ public class Driver extends Thread{
 
             long startBrowserTime = System.currentTimeMillis();
 
-            // see the \docs\firefox47.pdf for a discussion on why we have Firefox and FirefoxPortable etc.
+            // for WebDriver 3 compatibility I may need to set the FirefoxDriver to use the legacy driver rather than marionette
+            // -Dwebdriver.firefox.marionette=false
             switch (useThisDriver) {
                 case FIREFOX:
                     FirefoxProfile profile = new FirefoxProfile();
@@ -181,6 +182,9 @@ public class Driver extends Thread{
                 case FIREFOXPORTABLE:
 
                     setDriverPropertyIfNecessary("seleniumsimplified.firefoxportable", "/../FirefoxPortable/FirefoxPortable.exe", "C://webdrivers/FirefoxPortable/FirefoxPortable.exe");
+
+                    // for WebDriver 3 compatibility I may need to set the FirefoxDriver to use the legacy driver rather than marionette
+                    // -Dwebdriver.firefox.marionette=false
 
                     aDriver = new FirefoxDriver(
                                     new FirefoxBinary(

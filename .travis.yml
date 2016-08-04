@@ -1,4 +1,9 @@
 language: java
+# project is using Selenium 2.53.1 where the default Firefox driver works up to v 47.1
+# If v48 is used then the marionette driver would have to be installed and I don't think
+# it is installed on Travis so control the version of Firefox that is used
+addons:
+  firefox: "47.0.1"
 jdk:
   - oraclejdk8
   - oraclejdk7

@@ -1,14 +1,11 @@
 package com.seleniumsimplified.junit.suites;
 
 import com.seleniumsimplified.webdriver.basics.manipulate.ManipulateExampleTest;
-import com.seleniumsimplified.webdriver.basics.manipulate.SendKeysExamplesTest;
-import com.seleniumsimplified.webdriver.basics.manipulate.alerts.AlertHandlingExampleTest;
-import com.seleniumsimplified.webdriver.basics.manipulate.selectSupport.SelectSupportTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 /**
- * A simple suite that contains just the Interrogation tests
+ * A simple suite that contains just a Manipulation test
  * as an example of how to collate specific Test Classes into
  * a Suite
  *
@@ -18,10 +15,7 @@ import org.junit.runners.Suite;
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-        AlertHandlingExampleTest.class,
-        SelectSupportTest.class,
         ManipulateExampleTest.class,
-        SendKeysExamplesTest.class,
 })
 public class ManipulateOnlySuite {
 }

@@ -11,6 +11,8 @@ import org.openqa.selenium.WebDriver;
  *
  * It should be ignored.
  *
+ * Should really delete this
+ *
  * The code in here may not actually work.
  */
 @Ignore("Because this is a scratchpad and I only want to use it when I need it, it might have random stuff in it")
