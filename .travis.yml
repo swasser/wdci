@@ -1,6 +1,6 @@
 language: java
-# project is using Selenium 2.53.1 where the default Firefox driver works up to v 47.1
-# If v48 is used then the marionette driver would have to be installed and I don't think
+# project is using Selenium WebDriver where the legacy Firefox driver only works up to v 47.1
+# If v48 or above is used then the marionette driver would have to be installed and I don't think
 # it is installed on Travis so control the version of Firefox that is used
 addons:
   firefox: "47.0.1"
@@ -11,5 +11,6 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 script:
-- mvn -f code/pom.xml test -Dselenium2basics.webdriver=HTMLUNIT
-- mvn -f code/pom.xml test
+# removed HTMLUNIT - could not get working with selenium 3.0.0 
+#- mvn -f code/pom.xml test -Dselenium2basics.webdriver=HTMLUNIT
+- mvn -f code/pom.xml test -Dselenium2basics.webdriver=FIREFOXLEGACY

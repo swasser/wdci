@@ -8,6 +8,22 @@ Run automatically on TravisCi using HTMLUnit and Firefox
 
 http://seleniumsimplified.com
 
+## 14th October 2016 updated to use Selenium 3.0.0
+
+Could not get HTMLUnit working with Selenium 3.0.0. If you want to use HTMLUnit, suggest you drop down to v 2.53.1 of WebDriver. Have removed HTMLUnit from the Travis build for Selenium 3.0.0.
+
+All tests passed on Selenium 3.0.0 on Windows 10 for:
+
+- FIREFOXMARIONETTE, MarionetteDriver with Firefox 49.0.1, v 0.11.1 geckodriver.exe
+- FIREFOXPORTABLE, legacy FirefoxDriver && Firefox 47.0.1
+- FIREFOXPORTABLE, legacy FirefoxDriver && Firefox 46.0.1
+- FIREFOX, FirefoxDriver with Firefox 49.0.1, v 0.11.1 geckodriver.exe
+- CHROME, chromedriver v 2.24, Chrome v 53.0.2785.143 m
+- EDGE, v 14393
+- IE, driver v 2.53.1 32 bit
+
+
+
 ## Recently run and passing against
 
 Selenium 2.53.1 on Windows 10

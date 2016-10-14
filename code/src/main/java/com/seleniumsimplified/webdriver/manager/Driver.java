@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.MarionetteDriver;
@@ -41,7 +40,7 @@ public class Driver extends Thread{
 
     private static final  String DEFAULT_BROWSER = "FIREFOX";
 
-    public enum BrowserName{FIREFOX, GOOGLECHROME, SAUCELABS, IE, HTMLUNIT, GRID, FIREFOXPORTABLE, FIREFOXMARIONETTE, APPIUM, EDGE}
+    public enum BrowserName{FIREFOX, FIREFOXLEGACY, GOOGLECHROME, SAUCELABS, IE, HTMLUNIT, GRID, FIREFOXPORTABLE, FIREFOXMARIONETTE, APPIUM, EDGE}
 
     public static BrowserName currentDriver;
 
@@ -89,6 +88,9 @@ public class Driver extends Thread{
              */
             if("FIREFOX".contentEquals(defaultBrowser))
                 useThisDriver = BrowserName.FIREFOX;
+
+            if("FIREFOXLEGACY".contentEquals(defaultBrowser))
+                useThisDriver = BrowserName.FIREFOXLEGACY;
 
             if("FIREFOXPORTABLE".contentEquals(defaultBrowser))
                 useThisDriver = BrowserName.FIREFOXPORTABLE;
@@ -175,7 +177,21 @@ public class Driver extends Thread{
                     FirefoxProfile profile = new FirefoxProfile();
                     profile.setEnableNativeEvents(true);
 
+                    // selenium 3 defaults to using Marionette for Firefox so needs the geckodriver
+                    // use the FirefoxPortable for the legacy Firefox driver
+                    setDriverPropertyIfNecessary("webdriver.gecko.driver", "/../tools/marionette/geckodriver.exe", "C://webdrivers/marionette/geckodriver.exe");
+
                     aDriver = new FirefoxDriver();//profile);
+                    currentDriver = BrowserName.FIREFOX;
+                    break;
+
+                case FIREFOXLEGACY:
+
+                    // use the legacy selenium driver with the built in firefox
+
+                    DesiredCapabilities legacyCapabilities = DesiredCapabilities.firefox();
+                    legacyCapabilities.setCapability("marionette", false);
+                    aDriver = new FirefoxDriver(legacyCapabilities);
                     currentDriver = BrowserName.FIREFOX;
                     break;
 
@@ -183,19 +199,25 @@ public class Driver extends Thread{
 
                     setDriverPropertyIfNecessary("seleniumsimplified.firefoxportable", "/../FirefoxPortable/FirefoxPortable.exe", "C://webdrivers/FirefoxPortable/FirefoxPortable.exe");
 
-                    // for WebDriver 3 compatibility I may need to set the FirefoxDriver to use the legacy driver rather than marionette
+                    // for WebDriver 3 compatibility I need to set the FirefoxDriver to use the legacy driver rather than marionette
                     // -Dwebdriver.firefox.marionette=false
+                    // done using capabitility bellow  setCapability("marionette", false)
 
-                    aDriver = new FirefoxDriver(
-                                    new FirefoxBinary(
-                                            new File(System.getProperty("seleniumsimplified.firefoxportable"))),
-                                    new FirefoxProfile());
+                    DesiredCapabilities portableCapabilities = DesiredCapabilities.firefox();
+                    portableCapabilities.setCapability("marionette", false);
+                    portableCapabilities.setCapability("firefox_binary",
+                            new File(System.getProperty("seleniumsimplified.firefoxportable")).getAbsolutePath());
+
+                    aDriver = new FirefoxDriver(portableCapabilities);
+
                     currentDriver = BrowserName.FIREFOX;
                     break;
 
                 case FIREFOXMARIONETTE:
 
-                    setDriverPropertyIfNecessary("webdriver.gecko.driver", "/../tools/marionette/wires.exe", "C://webdrivers/marionette/wires.exe");
+                    // for version 10 and above of Marionette driver use geckodriver.exe
+                    // for Selenium 3 we can just use the Firefox driver above with geckodriver on the path
+                    setDriverPropertyIfNecessary("webdriver.gecko.driver", "/../tools/marionette/geckodriver.exe", "C://webdrivers/marionette/geckodriver.exe");
 
                     aDriver = new MarionetteDriver();//profile);
                     currentDriver = BrowserName.FIREFOXMARIONETTE;
