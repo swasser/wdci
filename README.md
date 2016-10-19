@@ -2,11 +2,49 @@
 
 A sample set of @Test methods for demo of WebDriver in CI.
 
-Run automatically on TravisCi using HTMLUnit and Firefox
+Run automatically on TravisCi using HTMLUnit and Internal Firefox Driver.
 
 [![Build Status](https://travis-ci.org/eviltester/wdci.svg?branch=master)](https://travis-ci.org/eviltester/wdci)
 
-http://seleniumsimplified.com
+This code also run successfully on:
+
+* [SauceLabs](https://saucelabs.com):
+    * Windows 10 - Edge v 14.14393
+    * Windows 10 - Chrome v 53.0
+    * Windows 10 - IE v 11.103
+    * Windows 10 - FIREFOX v 49.0
+    * Apple Mac - OS X 10.11, Safari 9.0
+* [BrowserStack](https://www.browserstack.com):
+    * Windows 10 - Edge v 13
+    * Windows 10 - Chrome v 53.0
+    * Windows 10 - IE v 11
+    * Windows 10 - FIREFOX v 49.0
+    * Apple Mac - "El Capitan", Safari 9.1
+
+Read my blog on Selenium WebDriver:
+
+* [http://seleniumsimplified.com](SeleniumSimplified.com)
+
+---
+
+# History
+
+## 19th October 2016 updated to use Selenium 3.0.1
+
+Selenium 3.0.1 has changed to allow HTMLUnit to work again. HTMLUnit 2.23 has been re-enabled in the build.
+
+* [SauceLabs](https://saucelabs.com):
+    * Windows 10 - Edge v 14.14393
+    * Windows 10 - Chrome v 53.0
+    * Windows 10 - IE v 11.103
+    * Windows 10 - FIREFOX v 49.0
+    * Apple Mac - OS X 10.11, Safari 9.0
+* [BrowserStack](https://www.browserstack.com):
+    * Windows 10 - Edge v 13
+    * Windows 10 - Chrome v 53.0
+    * Windows 10 - IE v 11
+    * Windows 10 - FIREFOX v 49.0
+    * Apple Mac - "El Capitan", Safari 9.1
 
 ## 14th October 2016 updated to use Selenium 3.0.0
 
@@ -24,7 +62,7 @@ All tests passed on Selenium 3.0.0 on Windows 10 for:
 
 
 
-## Recently run and passing against
+### run and passing against
 
 Selenium 2.53.1 on Windows 10
 
