@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
-import org.openqa.selenium.firefox.MarionetteDriver;
+//import org.openqa.selenium.firefox.MarionetteDriver;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -213,7 +213,7 @@ public class Driver extends Thread{
                     currentDriver = BrowserName.FIREFOX;
                     break;
 
-                case FIREFOXMARIONETTE:
+                /*case FIREFOXMARIONETTE:
 
                     // for version 10 and above of Marionette driver use geckodriver.exe
                     // for Selenium 3 we can just use the Firefox driver above with geckodriver on the path
@@ -221,7 +221,7 @@ public class Driver extends Thread{
 
                     aDriver = new MarionetteDriver();//profile);
                     currentDriver = BrowserName.FIREFOXMARIONETTE;
-                    break;
+                    break;*/
 
                 case HTMLUNIT:
 
